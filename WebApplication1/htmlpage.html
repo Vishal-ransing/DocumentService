@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var UlDocumnets = $('#Documents');
+
+            $('#btnGetAllDocument').click(function()
+            {
+                $.ajax({
+                    type: 'Get';
+                    URL: "http://localhost:55739/api/Document";
+                    dataType: JSON;
+                    sucess: function (data)
+                    {
+                        Document.empty();
+                        $.each(data, function (index, val) {
+
+                            var name = val.DocumentName + ' '+val.Document;
+                        Document.append('<li>' + DocumentName + '</li>');
+
+                    });
+                    }
+                });
+            });
+        }
+
+        )
+    </script>
+</head>
+<body>
+    <input id="btnGetAllDocument" type="button" value="Get All Document"></input>
+    <input id="btnUpoadDocument" type="button" value="Upload Document" />
+    <ul id="Documents">
+    </ul>
+</body>
+</html>
